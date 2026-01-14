@@ -22,3 +22,46 @@
 // 样例3：
 // 输入：2 15
 // 输出：1111
+
+# include <stdio.h>
+# include <math.h>
+void decimal(int n,int M){
+
+    int power = (int)pow(M,10);
+    if (M < 2|| M > 9|| n<0||n>= power){
+        printf("error\n");
+        return ;
+    }
+
+    int result[32];
+    int idex =0;
+    while(n>0){
+        result[idex++] = n%M;
+        n /=M;
+    }
+    if(idex==0){
+        printf("");
+        return;
+    }
+
+    int i;
+    for (i = idex -1;i>0;i--){
+        printf("%d",result[i]);
+    }
+
+
+}
+int main ()
+{
+    printf("请输入：");
+    int M,n = 0;
+    scanf("%d %d",&n,&M);
+
+    if(M <2 || M>9 || n<0 || n!= (int)n){
+        printf("error\n");
+        return 0;
+    }
+    void decimal(n,M);
+
+    
+}

@@ -1,29 +1,75 @@
-/* 知识点：
-1. 最大公约数（GCD）求解：辗转相除法（欧几里得算法）的递归实现逻辑；
-2. C语言函数：函数的声明、定义与递归调用方式；
-3. 条件判断：if语句用于交换两数（保证a≥b）、判断余数是否为0；
-4. 变量操作：int类型变量的交换；
-5. 标准I/O：scanf读取输入整数、printf输出计算结果。
-*/
-#include<stdio.h>
-int chf(int a, int b);
-int chf(int a, int b)
-{
-    if(a<b)
-    {
-        int temp=a;
-        a=b;
-        b=temp;
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+int main() {
+    char input[101];   // 存输入字符串
+    char result[101];  // 存处理后的字符串
+    int length;        // 输入字符串实际长度（去回车符）
+    int res_idx = 0;   // 结果数组下标
+    int is_valid = 1;  // 合法性标记
+    int first_alpha = -1;  // 第一个字母的位置（初始-1表示未找到）
+    int last_alpha = -1;   // 最后一个字母的位置（初始-1表示未找到）
+
+    // 1. 读取输入 + 去回车符
+    printf("请输入字符串（长度<100）：");
+    fgets(input, sizeof(input), stdin);
+    length = strlen(input) - 1;
+    input[length] = '\0';  // 真正删除回车符
+
+    // 2. 长度校验
+    if (length >= 100) {
+        printf("error\n");
+        return 1;
     }
-    int r=a%b;
-    if(r==0) return chf(b,r); 
-    return b;
+
+    for (int i =0;i<length;i++)
+    {
+        char ch = input[i];
+        if (ch != '*' && !isalpha(ch))
+        {
+            is_valid = 0;
+            printf("error\n");
+            return 1;
+        }
+
+        if(isalpha(ch)&&first_alpha == -1)
+        {
+            first_alpha = i;
+        }
+
+        if(isalpha(ch))
+        {
+            last_alpha = i;
+        }
+
+    }
+
+    for(int i =0;i<length;i++)
+    {
+        char ch;
+        ch = input[i];
+
+        if (ch !='*')
+        {
+            result[res_idx] = input[i];
+            res_idx ++;
+        }
+
+        else
+        {
+
+            if(i<first_alpha || i>last_alpha)
+            {
+                result[res_idx] = '*';
+                res_idx ++;
+            }
+        }
+    }
+
+    result[res_idx] ='\0';
+
+    printf("%s\n", result);
+
+
+
 }
-int main()
-{
-    int a,b;
-    scanf("%d%d",&a,&b);
-    printf("%d",chf(a,b));
-    return 0;
-}
-//（注：上述代码中阴影区域为需要填空的部分）
