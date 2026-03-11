@@ -12,7 +12,6 @@
                 "${file}",
                 "-o",
                 "${fileDirname}\\${fileBasenameNoExtension}.exe",
-                "-leasyx"
                 //"${workspaceFolder}/my_program.exe"//是否直接同时编译
             ],
             "options": {

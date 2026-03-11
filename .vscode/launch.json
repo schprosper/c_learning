@@ -13,9 +13,9 @@
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
             "environment": [],
-            "externalConsole": false,//true,//是否出现shell框框
+            "externalConsole": false,//是否出现shell框框
             "MIMode": "gdb",
-            "miDebuggerPath": "gdb",  //手动配置，设置调试器路径,与task中command配置找gdb路径，即使按照vscode安装和使用说明书6.2节配置环境变量查找
+            "miDebuggerPath": "C:\\mingw64\\bin\\gdb.exe",// "gdb",  //手动配置，设置调试器路径,与task中command配置找gdb路径，即使按照vscode安装和使用说明书6.2节配置环境变量查找
             "setupCommands": [
                 {
                     "description": "Enable pretty-printing for gdb",
