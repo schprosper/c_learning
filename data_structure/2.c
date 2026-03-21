@@ -1,24 +1,23 @@
-#include <stdio.h>
+# include <stdio.h>
 
-struct Student {
+struct Student
+{
     int id;
     float score;
-    char *name ;
 };
 
-int main(void) {
-    struct Student s1;
-    struct Student s2;
-    struct Student arr[2];
+int main (void){
+    int a = 10;
+    int *p = &a;
 
-    s1.id = 1001;
-    s1.score = 88.5;
-    s1.name = "AA";
+    printf("a = %d\n",a);
+    printf("a = %p\n",(void*)&a);
+    printf("p = %p\n",(void*)p);
+    printf("*p = %d\n",*p);
 
-    arr[0].id = 1002;
+    *p = 123;
 
-    printf("student1: id=%d, score=%.1f\n", s1.id, s1.score);
-    printf("student2: id=%d, score=%.1f\n", s2.id, s2.score);
+    print("*p123,then,a = %d",a);
 
-    return 0;
+    
 }

@@ -1,0 +1,2 @@
+struct  point *pp;
+
