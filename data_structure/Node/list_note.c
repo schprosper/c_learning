@@ -1,3 +1,5 @@
+/*这里是线性表！！*/
+
 //全局区域
 #define MaxSize 50
 #include <stdio.h>
@@ -10,6 +12,8 @@ typedef struct
     int last;//last是最后一个元素的下标。。。。
 } SeqList;
 
+
+
 typedef int ElemType;
 /*如果我动态分配内存*/
 /*动态分配内存，不是用多少内存给多少，自动扩容，而是让结构体占得内存少点*/
@@ -19,6 +23,7 @@ typedef struct {
 }SeqList2;
 
 //函数区
+
 
 /* 规定大小初始化*/
 /*静态的，数组空间已经包含在结构体里面，
@@ -202,7 +207,7 @@ int main(void)
 /*不同点---1. 初始化得到指针---由此推导出参数传入方式*/    
 
     SeqList2 *list2 = initList();
-    printf("内存占用%zu\n",sizeof(list2->data));//占用8，很少很少的！！
+    printf("Contain%zu\n",sizeof(list2->data));//占用8，很少很少的！！
     Listappend2(list2, 88);
     Listappend2(list2, 67);
     Listappend2(list2, 40);

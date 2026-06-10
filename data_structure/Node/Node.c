@@ -1,3 +1,4 @@
+/*链表——以一个小方格为一个单位长度*/
 //开始链表
 #include<stdio.h>
 #include<stdbool.h>
