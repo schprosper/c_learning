@@ -135,6 +135,56 @@ Node* reverseList(Node* head) {
     return hd;
 }
 
+int delMiddleNode(Node *head)
+{
+    Node *fast  = head->next;
+    Node *slow = head;
+
+    while(fast !=NULL && fast->next !=NULL)
+    {
+        fast = fast->next->next;
+        slow = slow->next;
+    }
+
+    Node *q = slow->next;
+    slow->next = q->next;
+    free(q);
+    return 1 ;
+}
+
+void reOrderList(Node *head)
+{
+    
+}
+
+//判断是否有环
+int IsCycle(Node *head){
+    Node *fast = head;
+    Node *slow = head;
+
+    while (fast != NULL && fast->next != NULL)
+    {
+        fast = fast->next->next;
+        slow = slow->next;
+        if (fast == slow)
+        {
+            Node *p1 = head;
+            Node *p2 = slow;
+
+            while (p1 != p2)
+            {
+                p1 = p1->next;
+                p2 = p2->next;
+            }
+
+            return p1; // 环入口
+        }
+    }
+    return 0;
+
+//再次相遇的地点，就是环的入口！！
+
+}
 
 
 
