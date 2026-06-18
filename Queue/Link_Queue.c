@@ -1,3 +1,4 @@
+
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -14,7 +15,7 @@ typedef struct
     QueueNode* rear;
 }Queue;
 
-/*create*/
+/*create,这里是带头结点的队列声明方式！！！*/
 Queue* initQueue()
 {
     QueueNode* node = (QueueNode*)malloc(sizeof(QueueNode));
@@ -42,7 +43,8 @@ int isEmpty(Queue* Q)
     }
 }
 
-/*入队*/
+/*入队，带头结点，所以rear指向有值的尾部，
+这里和循环队列完全不一样*/
 void equeue(Queue *Q,ElemType e)
 {
     QueueNode* node = (QueueNode*)malloc(sizeof(QueueNode));
@@ -66,6 +68,31 @@ void dequeue(Queue *Q, ElemType *e)
     }
     free(temp);
 }
+
+/*队列的长度*/
+/*这里注意，对于Q而言，计数的时候
+front和rear这个变量是不能动的，他们只是被记录的位置
+真正的移动要给temp*/
+int queueSize(Queue *Q)
+{
+    int size = 0; //这里必须先初始化赋值，不然后面操控size++的时候会出错
+
+    if (Q->front == Q->rear)
+    {
+        return size;
+    }
+    else
+    {
+        QueueNode* temp = Q->front->next;
+        while(temp =! NULL)
+        {
+            size++;
+            temp = temp->next;
+        }
+        return size;
+    }
+}
+
 
 int main()
 {
