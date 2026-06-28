@@ -29,11 +29,13 @@ void main()
 		scanf("%d",&j);
 		r[i].key = j;
 	}
+	//没排序时候的序列
 	for(i=1;i<=len;i++)
 		printf("%d  ",r[i].key);
 	printf("\n");
 
 	InsSort(r,len);
+	//输出
 	for(i=1;i<=len;i++)
 		printf("%d  ",r[i].key);
 	printf("\n");
@@ -57,3 +59,24 @@ void   InsSort(RecordType  r[],  int length)
 		r[j+1]=r[0];		         /*将待插入记录插入到已排序的序列中*/
 	}
 } /*  InsSort  */ 
+
+/*递增，所以让大的往后移*/
+void insSort(RecordType r[], int lenth)
+{
+	int i,j;
+	for(i =2;i<=lenth;i++)
+	{
+		r[0]=r[i];//哨兵是用来移动的。
+		j = i -1; //和谁比较，这里好像默认是递增有序
+		while (r[0].key<r[j].key)
+		{
+			r[j+1] = r[j];
+			j = j-1;
+		}
+		r[j+1] = r[0]; //向前加一位
+		
+	}
+}
+
+
+

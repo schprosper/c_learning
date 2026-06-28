@@ -28,6 +28,11 @@ typedef struct {
 } OrthList;
 
 
+
+
+
+
+
 //在图中定位顶点
 int LocateVertex(OrthList *G, VertexData v);
 //7.2 创建图的十字链表
@@ -60,7 +65,7 @@ void CrtOrthList(OrthList *g) {
     int n, e;
     int i, j, k;
     char vt, vh;
-    ArcNode *p;
+    ArcNode *p; //弧节点链表
 
     printf("请输入图的顶点个数和弧的个数（格式如：3 4）:\n");
     scanf("%d %d", &n, &e);
@@ -69,7 +74,7 @@ void CrtOrthList(OrthList *g) {
 
     for (i = 0; i < n; i++) {
         printf("请输入第 %d 个顶点字符：", i + 1);
-        scanf(" %c", &g->vertex[i].data);
+        scanf("% c", &g->vertex[i].data);
         g->vertex[i].firstin = NULL;
         g->vertex[i].firstout = NULL;
     }

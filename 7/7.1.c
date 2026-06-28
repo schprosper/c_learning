@@ -18,7 +18,7 @@ typedef struct ArcNode {
 typedef struct {
     VertexData vexs[MAX_VERTEX_NUM];                   // 顶点数组
     ArcNode arcs[MAX_VERTEX_NUM][MAX_VERTEX_NUM];      // 邻接矩阵
-    int vexnum, arcnum;
+    int vexnum, arcnum; // 总的顶点数和弧数。
     GraphKind kind;
 } AdjMatrix;
 
