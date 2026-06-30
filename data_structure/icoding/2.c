@@ -215,7 +215,7 @@ bool init_queue(LinkQueue *LQ)
 
 {
     LinkQueueNode* head = (LinkQueueNode*)malloc(sizeof(LinkQueueNode));
-    if(head =NULL)
+    if(head == NULL)
     {
         return false;
     }
@@ -230,6 +230,12 @@ bool enter_queue(LinkQueue *LQ, ElemType x)
 {
     LinkQueueNode *s = (LinkQueueNode*)malloc(sizeof(LinkQueueNode));
     //这里差点写成 LinkQueueNode s了。但是为什么不是？？
+    /*链表结点要长期存在，不能是函数里的局部变量。*/
+    /*这里如果申请的话，那么需要针对地址进行申请，不是针对节点进行操作*/
+    
+    if (s == NULL) {
+    return false;
+    }
     s->data = x;
 
     s->next = (*LQ)->next;
@@ -246,10 +252,11 @@ bool leave_queue(LinkQueue *LQ, ElemType *x)
     head = (*LQ)->next;
     if((*LQ)== head)
     {
-        return NULL;
+        return true;
     }
 
     delet = head->next;
+    *x = delet->data;
     head->next = delet->next;
     if(delet == (*LQ))
     {
@@ -260,3 +267,4 @@ bool leave_queue(LinkQueue *LQ, ElemType *x)
     return true;
 
 }
+
